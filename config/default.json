@@ -1,0 +1,13 @@
+{
+  "Database" : {
+    "Host" : "localhost",
+    "Port" : 27017,
+    "Name" : "test"
+  },
+  "Pusher" : {
+  	"appId": "17968",
+  	"key": "749fe4e36ad8d9f53f17",
+  	"secret": "8709799d3bb92127ecec",
+  	"interval": 5000
+  }
+}
