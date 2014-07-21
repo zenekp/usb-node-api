@@ -12,19 +12,19 @@
     "postdeploy": "echo ive deployed",
     "prepublish": ""
   },
-  "main": "lib/foo.js",
+  "main": "",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/zenekp/usb-node-api"
-},
+    "type": "git",
+    "url": "https://github.com/zenekp/usb-node-api"
+  },
   "bugs": {
-  "url": "https://github.com/zenekp/usb-node-api/issues"
-},
+    "url": "https://github.com/zenekp/usb-node-api/issues"
+  },
   "keywords": [
-  "node",
-  "oauth",
-  "mongodb"
-],
+    "node",
+    "oauth",
+    "mongodb"
+  ],
   "dependencies": {
     "mongodb": "1.3.x",
     "mongoose": "3.8.x",
