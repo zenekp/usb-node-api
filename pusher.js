@@ -10,22 +10,29 @@ var pusher = new Pusher({
 	secret: Config.secret
 });
 
-exports.send = function(db) {
+exports.send = function(constants) {
 	
 	var model = 'temperatures';
 	
-	var last_timestamp = new Date().getTime();
+	var root = constants.ROOT;
 	
+	var params = {};
+	
+	params.sensor = '533d7d699a31316640110f52';
+	
+	params.date_created = { $gte : new Date().getTime() };
+	
+	var Temperature = require(root+"/models/temperature");
+
 	var message = function() {
-		db.db.collection(model, function(err, collection) {
-	        collection.find({ 'date_created' : { $gte: last_timestamp } }).sort({ 'date_created' : 1 }).toArray(function(err, items) {
-				if ( items.length /*&& items[ items.length - 1 ].date_created != undefined*/ ) {
-					/*last_timestamp = items[ items.length - 1 ].date_created;*/
-					last_timestamp = new Date().getTime();
-					pusher.trigger('test_channel', 'temperature_update', items);
-				}
-	        });
-	    });
+		Temperature.Class.find(params, function(err, items) {
+			if (err) {
+				console.log(err);
+			} else {
+				params.date_created = { $gte : new Date().getTime() };
+				pusher.trigger('test_channel', 'temperature_update', items);
+			}	
+		});
 	};
 	
 	message();

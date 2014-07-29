@@ -2,8 +2,6 @@
 
 var constants = require("./constants");
 
-// var db = require("./database");
-
 var helpers = require("./helpers");
 
 var mongoose = require("./mongoose");
@@ -18,5 +16,6 @@ require("./services/default").routes(server, helpers, constants);
 
 restify.start();
 
-// var pusher = require("./pusher");
-// pusher.send(db);
+var pusher = require("./pusher");
+// var db = require("./database");
+pusher.send(constants);
